@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="./style.css"></link>
+</head>
+<body>
+    <button id="new-book">New Book</button>
+    <div id="books"></div>
+
+    <div id="overlay">
+        <form id="form">
+            <button type="button" id="x-btn">x</button>
+            <label for="title">Title: </label>
+            <input type="text" id="title" name="title">
+            <label for="author">Author: </label>
+            <input type="text" id="author" name="author">
+            <label for="pages">Number of pages: </label>
+            <input type="number" id="pages" name="pages">
+            <label for="read">Have you read it? </label>
+            <input type="checkbox" id="read" name="read">
+            <button>Create</button>
+        </form>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
