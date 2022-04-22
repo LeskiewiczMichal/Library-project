@@ -1,9 +1,17 @@
 const booksContainer = document.getElementById('books');
 const form = document.getElementById('form');
 const overlay = document.getElementById('overlay');
+const createBtn = document.getElementById('create');
+const newBookBtn = document.getElementById('new-book');
+
 
 overlay.style.display = 'none'
 
+let harry = new book('ok', 'poewr', 233, 'read')
+let myLibrary = [harry];
+fillBooksContainer(booksContainer);
+
+// Book constructor
 function book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -11,15 +19,18 @@ function book(title, author, pages, read) {
     this.read = read;
 }
 
-let harry = new book('Harry potter', 'JK', 320, 'read');
-let lord = new book('lord of the rings', 'tolkien', 500, 'read');
-let da = new book('dragon age', 'gaider', 200, 'not read');
 
-const myLibrary = [harry, lord, da];
+function resetBooksContainer(parent){
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
 
-function addBookToLibrary() {
-    myLibrary.forEach(function (book){
+function fillBooksContainer(booksContainer){
+    resetBooksContainer(booksContainer);
+    myLibrary.forEach(book => {
         const newDiv = document.createElement('div');
+        newDiv.classList.add('book')
         booksContainer.appendChild(newDiv);
         const title = document.createElement('p');
         title.innerText = `"${book.title}"`;
@@ -29,15 +40,17 @@ function addBookToLibrary() {
         pages.innerText = `${book.pages} pages`;
         const read = document.createElement('p');
         read.innerText = `${book.read}`;
+        const removeBook = document.createElement('button');
+        removeBook.classList.add('removeBook');
+        removeBtn(removeBook)
 
         newDiv.appendChild(title);
         newDiv.appendChild(author);
         newDiv.appendChild(pages);
         newDiv.appendChild(read);
+        newDiv.appendChild(removeBook)
     });
 }
-
-const newBookBtn = document.getElementById('new-book');
 
 newBookBtn.addEventListener('click', () => {
     overlay.style.display = 'block'
@@ -48,9 +61,32 @@ xBtn.addEventListener('click', () => {
     overlay.style.display = 'none'
 })
 
-    // document.addEventListener('click', (e) => {
-    //     if (!form.contains(e.target) && overlay.style.display == 'block') {
-    //         overlay.style.display = 'none'
-    //     }
-    // })
+createBtn.addEventListener ('click', (e) => {
+    e.preventDefault();
+
+    if (title.value === '' || author.value === ''
+        || pages.value === '') {
+            alert('All fields have to be filled');
+            return false;
+        }
+
+    let read = document.getElementById('read');
+    if (read.checked == true) {
+        read = 'Read'
+    } else {
+        read = 'Not read'
+    }
+    const newBook = new book(title.value, author.value, pages.value, read);
+
+    myLibrary.push(newBook);
+    fillBooksContainer(booksContainer)
+
+    xBtn.click()
+})
+
+// function removeBtn(removeBtn, library){
+//     removeBtn.addEventListener('click', function() {
+//         library removeBtn.parentNode
+//     })
+// }
 
