@@ -438,10 +438,25 @@
     cursor: pointer;
   }
 
-  .removeBook {
-    width: 100px;
-    height: 100px;
+  .book {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .book > button {
+    width: 120px;
+    height: 50px;
     background-color: red;
+    align-self: center;
+  }
+
+  .book > button:after {
+    content: 'Remove';
+  }
+
+  .book > button:hover {
+    background-color: black;
   }
 
   

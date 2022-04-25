@@ -41,8 +41,13 @@ function fillBooksContainer(booksContainer){
         const read = document.createElement('p');
         read.innerText = `${book.read}`;
         const removeBook = document.createElement('button');
-        removeBook.classList.add('removeBook');
-        removeBtn(removeBook)
+        removeBook.addEventListener('click', (e) => {
+            e.target.parentElement.remove()
+            myLibrary.forEach((book) => {
+                const index = myLibrary.indexOf(book);
+                myLibrary.splice(index)
+            })
+        })
 
         newDiv.appendChild(title);
         newDiv.appendChild(author);
@@ -83,10 +88,3 @@ createBtn.addEventListener ('click', (e) => {
 
     xBtn.click()
 })
-
-// function removeBtn(removeBtn, library){
-//     removeBtn.addEventListener('click', function() {
-//         library removeBtn.parentNode
-//     })
-// }
-
