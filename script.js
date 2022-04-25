@@ -38,8 +38,15 @@ function fillBooksContainer(booksContainer){
         author.innerText = `Author: ${book.author}`;
         const pages = document.createElement('p');
         pages.innerText = `${book.pages} pages`;
-        const read = document.createElement('p');
+        const read = document.createElement('button');
         read.innerText = `${book.read}`;
+        read.addEventListener('click', () => {
+            if(read.innerText === 'Read'){
+                read.innerText = 'Not read';
+            } else {
+                read.innerText = 'Read';
+            }
+        })
         const removeBook = document.createElement('button');
         removeBook.addEventListener('click', (e) => {
             e.target.parentElement.remove()
@@ -58,6 +65,10 @@ function fillBooksContainer(booksContainer){
 }
 
 newBookBtn.addEventListener('click', () => {
+    title.value = '';
+    author.value = '';
+    pages.value = undefined;
+    read.checked = false;
     overlay.style.display = 'block'
 })
 

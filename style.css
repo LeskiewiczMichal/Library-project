@@ -356,19 +356,46 @@
       box-sizing: border-box;
   }
 
+  body {
+    font-family: 'Raleway', sans-serif;
+    background-color: rgb(211, 188, 188);
+  }
+
+  #header {
+    height: 120px;
+    width: 100vw;
+    background-color: rgb(223, 186, 156);
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+  }
+
+  body > div:nth-of-type(2) {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(215, 187, 164);
+    padding: 10px;
+  }
+
   #books {
       display: flex;
       gap: 20px;
+      padding: 20px;
+      background-color: rgb(211, 188, 188);
+      flex-wrap: wrap;
   }
 
   #books > div {
-      height: 200px;
-      width: 200px;
+      min-height: 200px;
+      min-width: 200px;
       border: 1px solid black;
       font-size: 20px;
       padding: 10px;
       background-color: rgba(105, 176, 223, 0.295);
+      font-weight: 00;
   }
+
+  
 
   #new-book {
       padding: 5px;
@@ -381,6 +408,10 @@
       border-radius: 10px;
       font-size: large;
       font-weight: bold;
+  }
+
+  #new-book:hover {
+    background-color: rgb(19, 158, 61);
   }
 
   #form {
@@ -449,14 +480,17 @@
     height: 50px;
     background-color: red;
     align-self: center;
+    font-weight: bold;
+    border-radius: 10px;
   }
 
-  .book > button:after {
+  .book > button:last-of-type::after {
     content: 'Remove';
   }
 
   .book > button:hover {
     background-color: black;
+    cursor: pointer;
   }
 
   
