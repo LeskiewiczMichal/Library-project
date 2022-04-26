@@ -7,8 +7,7 @@ const newBookBtn = document.getElementById('new-book');
 
 overlay.style.display = 'none'
 
-let harry = new book('ok', 'poewr', 233, 'read')
-let myLibrary = [harry];
+let myLibrary = [];
 fillBooksContainer(booksContainer);
 
 // Book constructor
@@ -38,29 +37,40 @@ function fillBooksContainer(booksContainer){
         author.innerText = `Author: ${book.author}`;
         const pages = document.createElement('p');
         pages.innerText = `${book.pages} pages`;
-        const read = document.createElement('button');
-        read.innerText = `${book.read}`;
-        read.addEventListener('click', () => {
-            if(read.innerText === 'Read'){
-                read.innerText = 'Not read';
+        const buttonContainer = document.createElement('div');
+            const read = document.createElement('button');
+            read.innerText = `${book.read}`;
+            if (read.innerText === 'Read') {
+                read.style.backgroundColor = 'green'
             } else {
-                read.innerText = 'Read';
+                read.style.backgroundColor = 'rgb(255, 0, 0)';
             }
-        })
-        const removeBook = document.createElement('button');
-        removeBook.addEventListener('click', (e) => {
-            e.target.parentElement.remove()
-            myLibrary.forEach((book) => {
-                const index = myLibrary.indexOf(book);
-                myLibrary.splice(index)
+            read.addEventListener('click', () => {
+                if(read.innerText === 'Read'){
+                    read.innerText = 'Not read';
+                    read.style.backgroundColor = 'rgb(255, 0, 0)'
+                } else {
+                    read.innerText = 'Read';
+                    read.style.backgroundColor = 'green'
+                }
             })
-        })
+            
+
+            const removeBook = document.createElement('button');
+            removeBook.addEventListener('click', (e) => {
+                e.target.parentElement.parentElement.remove()
+                myLibrary.forEach((book) => {
+                    const index = myLibrary.indexOf(book);
+                    myLibrary.splice(index)
+                })
+            })
 
         newDiv.appendChild(title);
         newDiv.appendChild(author);
         newDiv.appendChild(pages);
-        newDiv.appendChild(read);
-        newDiv.appendChild(removeBook)
+        buttonContainer.appendChild(read);
+        buttonContainer.appendChild(removeBook);
+        newDiv.appendChild(buttonContainer);
     });
 }
 
@@ -99,3 +109,4 @@ createBtn.addEventListener ('click', (e) => {
 
     xBtn.click()
 })
+
