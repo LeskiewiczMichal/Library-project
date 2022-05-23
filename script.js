@@ -11,11 +11,20 @@ let myLibrary = [];
 fillBooksContainer(booksContainer);
 
 // Book constructor
-function book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// function book(title, author, pages, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+// }
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 
@@ -102,7 +111,7 @@ createBtn.addEventListener ('click', (e) => {
     } else {
         read = 'Not read'
     }
-    const newBook = new book(title.value, author.value, pages.value, read);
+    const newBook = new Book(title.value, author.value, pages.value, read);
 
     myLibrary.push(newBook);
     fillBooksContainer(booksContainer)
